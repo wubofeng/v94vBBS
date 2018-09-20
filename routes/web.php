@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test/{category}', 'TestController@index');
+Route::get('/test/', 'TestController@index')->name('test');
 
 Route::get('/', 'PagesController@root')->name('root');
 
@@ -40,3 +40,6 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 
 // 通知路由
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+
+// 无权提醒
+Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
