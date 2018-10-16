@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                v94vBBS
+                律助天地
             </a>
         </div>
 
