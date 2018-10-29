@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Cache;
+use App\Models\Category;
 
 function route_class()
 {
@@ -45,4 +47,11 @@ function model_plural_name($model)
 
     // 获取子串的复数形式，例如：传参 `user` 会得到 `users`
     return str_plural($snake_case_name);
+}
+
+function categories_cache()
+{
+    return Cache::rememberForever('categories', function (){
+        return Category::all();
+    });
 }
