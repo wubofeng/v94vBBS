@@ -33,5 +33,11 @@ class AppServiceProvider extends ServiceProvider
         if (app()->isLocal()) {
             $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
         }
+
+        if ($this->app->environment() !== 'production') {
+
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+
+        }
     }
 }
