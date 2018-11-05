@@ -34,6 +34,14 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
         }
 
+        \API::error(function (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+            abort(404);
+        });
+
+        \API::error(function (\Illuminate\Auth\Access\AuthorizationException $exception) {
+            abort(403, $exception->getMessage());
+        });
+
         if ($this->app->environment() !== 'production') {
 
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
