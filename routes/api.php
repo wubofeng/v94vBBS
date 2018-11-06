@@ -54,14 +54,24 @@ $api->version('v1', [
             ->name('api.authorizations.destroy');
 
         // 游客可以访问的接口
+        // 分类
         $api->get('categories', 'CategoriesController@index')
             ->name('api.categories.index');
+        // 话题列表
         $api->get('topics', 'TopicsController@index')
             ->name('api.topics.index');
+        // 某个用户发布的话题
         $api->get('users/{user}/topics', 'TopicsController@userIndex')
             ->name('api.users.topics.index');
+        // 话题详情
         $api->get('topics/{topic}', 'TopicsController@show')
             ->name('api.topics.show');
+        // 话题回复列表
+        $api->get('topics/{topic}/replies', 'RepliesController@topicIndex')
+            ->name('api.topics.replies.index');
+        // 某个用户的回复列表
+        $api->get('users/{user}/replies', 'RepliesController@userIndex')
+            ->name('api.users.replies.index');
 
         // 需要token验证的接口
         $api->group(['middleware' => 'api.auth'], function($api){
@@ -80,14 +90,17 @@ $api->version('v1', [
             // 发布话题
             $api->post('topics', 'TopicsController@store')
                 ->name('api.topics.store');
+            // 修改话题
             $api->patch('topics/{topic}', 'TopicsController@update')
                 ->name('api.topic.update');
+            // 删除话题
             $api->delete('topics/{topic}', 'TopicsController@destroy')
                 ->name('api.topics.destroy');
 
             // 发布回复
             $api->post('topics/{topic}/replies', 'RepliesController@store')
                 ->name('api.topics.replies.store');
+            // 删除回复
             $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
                 ->name('api.topics.replies.destroy');
         });
