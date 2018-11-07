@@ -180,6 +180,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         App\Providers\EasySmsServiceProvider::class,
+        App\Providers\JpushServiceProvider::class,
 
     ],
 
