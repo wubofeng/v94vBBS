@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                larabbs
+                律菁英社区
             </a>
         </div>
 
